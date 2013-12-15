@@ -24,6 +24,19 @@ class base_controller {
 								
 		# So we can use $user in views			
 			$this->template->set_global('user', $this->user);
+
+		# CSS includes:
+		$client_files_head = Array('/css/bootstrap.min.css',
+								   '/css/bootstrap-responsive.min.css',
+								   '/css/kalt.css'
+								   //,'http://fonts.googleapis.com/css?family=Montserrat'
+								   );
+		$this->template->client_files_head = Utils::load_client_files($client_files_head);
+
+
+		# Javascript/jQuery includes:
+		$client_files_body = Array();
+        $this->template->client_files_body = Utils::load_client_files($client_files_body);			
 			
 	}
 	

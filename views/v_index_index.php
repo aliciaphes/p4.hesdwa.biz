@@ -1,11 +1,9 @@
-<p>
-	Hello World! You have successfully spawned a new application.
-</p>
 
-<p>
-	This message is being triggered via the c_index.php controller, within the index() method.
-</p>
+<!-- This page is going to act purely as a 'routing page', depending if the user exists or not -->
 
-<p>
-	<strong>Since everything is in working order, you should now delete <?php echo APP_PATH?>diagnostics.php</strong>
-</p>
+<?php
+	if($user)
+		Router::redirect("/users/profile/");
+	else
+		Router::redirect("/users/login/");		
+?>
