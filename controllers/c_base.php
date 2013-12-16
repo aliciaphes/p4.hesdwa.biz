@@ -28,6 +28,7 @@ class base_controller {
 		# CSS includes:
 		$client_files_head = Array('/css/bootstrap.min.css',
 								   '/css/bootstrap-responsive.min.css',
+								   '/css/bootstrap-formhelpers.min.css',
 								   '/css/kalt.css'
 								   //,'http://fonts.googleapis.com/css?family=Montserrat'
 								   );
@@ -36,7 +37,9 @@ class base_controller {
 
 		# Javascript/jQuery includes:
 		$client_files_body = Array('/js/jquery-1.10.2.min.js',
+								   '/js/jquery-ui-1.10.3.custom.min.js',
 								   '/js/bootstrap.min.js',
+								   '/js/bootstrap-formhelpers.min.js',
 								   '/js/kalt.js');
         $this->template->client_files_body = Utils::load_client_files($client_files_body);			
 			

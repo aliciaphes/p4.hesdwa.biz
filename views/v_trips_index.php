@@ -1,4 +1,4 @@
-<!-- This is the view where the user will see a list of oongas -->
+<!-- Comment -->
 
 <div class="container-fluid">
 
@@ -28,19 +28,15 @@
 
 	<div class="span3 offset3">
 		
-		<?php echo 'No trips';?>
-
-		<br/><br/>
-
-
-
-<!-- 		<?php
+<?php
 
 		$interact = new Form();
-		$interact->open('form', "/posts/users", NULL, 'POST');
+		$interact->open('form', "/trips/add", NULL, 'POST');
 		?>
-		<button class="btn" type="submit">Create</button>
-	</form> -->
+		<button class="btn" type="submit">Add</button>
+	</form>		
+
+		<br/><br/>
 
 </div>
 

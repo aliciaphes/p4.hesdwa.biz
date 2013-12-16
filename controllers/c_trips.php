@@ -1,5 +1,5 @@
 <?php
-class posts_controller extends base_controller {
+class trips_controller extends base_controller {
 
     public function __construct() {
         parent::__construct();
@@ -16,7 +16,7 @@ class posts_controller extends base_controller {
         $this->template->content = View::instance('v_trips_add');
         $this->template->title   = "New trip";
 
-        # Pass data to the view to check if oonga has been added
+        # Pass data to the view to check if trip has been added
         $this->template->content->added = $added;
 
         # Render template
@@ -49,22 +49,20 @@ class posts_controller extends base_controller {
         $this->template->content = View::instance('v_trips_index');
         $this->template->title   = $this->user->first_name."'s trips";
 
-        // # Query
-        // $q = "SELECT *
-        // FROM trips 
-        // WHERE user_id = ".$this->user->user_id . 
-        // "ORDER BY beginTime endTime DESC" ;
+        # Query
+        $q = "SELECT *
+        FROM trips 
+        WHERE user_id = ".$this->user->user_id . 
+        " ORDER BY beginTime,endTime DESC" ;
 
-        // # Run the query, store the results in the variable $trips
-        // $trips = DB::instance(DB_NAME)->select_rows($q);
+        # Run the query, store the results in the variable $trips
+        $trips = DB::instance(DB_NAME)->select_rows($q);
 
-        // # Pass data to the View
-        // $this->template->content->trips = $trips;
+        # Pass data to the View
+        $this->template->content->trips = $trips;
 
         // # Render the View
-        // echo $this->template;
-
-
+        echo $this->template;
     }
 
 
