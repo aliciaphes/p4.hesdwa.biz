@@ -16,20 +16,25 @@
 				?>
 
 				<h3><?php echo "Edit your profile"; ?></h3><br/>
-				<label>First name</label>
+				<label for="inputFirstName">First name</label>
 				<?php $info = $user->first_name; ?>
-				<input type="text" class="input-block-level" name="first_name" value="<?php echo $info; ?>" placeholder="First name">
-
-
-				<label>Last name</label>
-				<?php $info = $user->last_name; ?>
-				<input type="text" class="input-block-level" name="last_name" value="<?php echo $info; ?>" placeholder="Last name">
-				
-				<label>Interests</label>
-				<textarea placeholder='Share what you like' name='interests' maxlength='255' cols='70' rows='10'></textarea>
+				<input type="text" class="input-block-level" name="first_name" id="inputFirstName" value="<?php echo $info; ?>" placeholder="First name">
 
 				<br/>
+				<label for="inputLastName">Last name</label>
+				<?php $info = $user->last_name; ?>
+				<input type="text" class="input-block-level" name="last_name" id="inputLastName" value="<?php echo $info; ?>" placeholder="Last name">
 
+				<br/>
+				<label for="inputTimezone">Time zone</label>
+				<?php $info = $user->timezone; ?>
+				<input type="text" class="input-block-level" name="timezone" id="inputTimezone" value="<?php echo $info; ?>" placeholder="Time zone">				
+				
+				<br/>
+				<label for="inputInterests">Interests</label>
+				<textarea placeholder='Share what you like' name='interests' id="inputInterests" maxlength='255' cols='50' rows='10'></textarea>
+
+				<br/><br/>
 				<button class="btn" type="submit">Update</button>
 				</form>
 				

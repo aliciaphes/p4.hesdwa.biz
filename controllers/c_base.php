@@ -35,7 +35,9 @@ class base_controller {
 
 
 		# Javascript/jQuery includes:
-		$client_files_body = Array();
+		$client_files_body = Array('/js/jquery-1.10.2.min.js',
+								   '/js/bootstrap.min.js',
+								   '/js/kalt.js');
         $this->template->client_files_body = Utils::load_client_files($client_files_body);			
 			
 	}

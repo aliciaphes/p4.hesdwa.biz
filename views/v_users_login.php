@@ -41,7 +41,7 @@
 				</div>
 			<?php endif; ?>
 
-
+			<br/>
 			<?php
 			$signup = new Form();
 

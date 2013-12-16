@@ -11,37 +11,45 @@
 
 <body>	
 
-<header>
-	<h2>This is my header</h2>
-</header>
+	<header>
+		<h3>KALT // Kill Airport Layover Time</h3>
+	</header>
 
 
 	<?php if($user): ?>
 
-<!-- Create a navigation bar for the user -->
-		<div class="navbar">
-			<div class="navbar-inner">
-				<div class='container'>
+	<!-- Create the user user -->
+	<div class="container-fluid">
 
-					<a class="brand"><?php if(defined('APP_NAME')) echo APP_NAME.' - '.$user->first_name.' '.$user->last_name;?></a>
+		<div class="row-fluid">
 
-					<ul class="nav nav-pills">
-						<li><a href='/'>My profile</a></li>	
-						<li><a href='/posts/add'>Upcoming trips</a></li>
+			<div class="span5 offset1">	
+				<ul class="nav nav-tabs">
+					<li class="dropdown">
+						<a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">
+						<?php if(defined('APP_NAME')) echo APP_NAME.' - '.$user->first_name.' '.$user->last_name;?>
+						<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href='/users/index'>My profile</a></li>	
+						<li><a href='/trips/index'>Upcoming trips</a></li>
 						<li><a href='/posts/'>Find fellow travelers</a></li>
 						<li><a href='/users/logout'>Log out</a></li>
-					</ul>			
-				</div>
-			</div>
+					</ul>
+				</li>
+			</ul>
 		</div>
+	</div>
+</div>
 
-	<?php endif; ?>
+<?php endif; ?>
 
 
 
-	<?php if(isset($content)) echo $content; ?>
+<?php if(isset($content)) echo $content; ?>
 
-	<?php if(isset($client_files_body)) echo $client_files_body; ?>
+<?php if(isset($client_files_body)) echo $client_files_body; ?>
 
 <footer>
 	<p>&#169; Project 4 - 2013 - ALicia Perez</p>

@@ -3,3 +3,12 @@ body{
 	background-size: cover;
 	background-repeat: no-repeat;	
 }
+
+/*textarea[name=foo] {*/
+textarea{
+    resize: none;
+}
+
+ul{
+    list-style-type: none;
+}

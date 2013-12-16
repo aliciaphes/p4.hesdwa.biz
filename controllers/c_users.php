@@ -177,18 +177,38 @@ class users_controller extends base_controller {
         }    
     }
 
+
+    public function p_edit() {
+
+        # Sanitize the user entered data
+        $_POST = DB::instance(DB_NAME)->sanitize($_POST);
+
+        $data = Array(
+            "first_name" => $_POST['first_name'],
+            "last_name"  => $_POST['last_name'],
+            "timezone"   => $_POST['timezone'],
+            "modified"   => Time::now()
+            );
+
+        DB::instance(DB_NAME)->update("users", $data, "WHERE user_id = ".$this->user->user_id);
+
+        # Redirect to user's profile
+        Router::redirect('/users/profile');
+
+    }
+
+
+
     public function profile($user_name = NULL) {
 
         # Create a new View instance
-        $view = View::instance('v_users_profile');
-
+        $this->template->content = View::instance('v_users_profile');
         $this->template->title   = "Your profile";
 
-        # Pass information to the view instance
-        $view->user_name = $user_name;
+        $this->template->user_name = $user_name;
 
-        # Render View
-        echo $view;
+        # Render template
+        echo $this->template;  
 
     }
 
