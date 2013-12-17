@@ -26,18 +26,22 @@ class trips_controller extends base_controller {
 
     public function p_add() {
 
-        # Associate this post with this user
-        $_POST['user_id']  = $this->user->user_id;
+        // # Associate this post with this user
+        // $_POST['user_id']  = $this->user->user_id;
 
-        # Unix timestamp of when this post was created / modified
-        $_POST['created']  = Time::now();
-        $_POST['modified'] = Time::now();
+        // # Unix timestamp of when this post was created / modified
+        // $_POST['created']  = Time::now();
+        // $_POST['modified'] = Time::now();
 
-        # Insert into database
-        DB::instance(DB_NAME)->insert('trips', $_POST);
+        // # Insert into database
+        // DB::instance(DB_NAME)->insert('trips', $_POST);
 
-        # Redirect to show oongas      
-        Router::redirect("/posts/add/added");
+        // # Redirect to show oongas      
+        // Router::redirect("/posts/add/added");
+
+        echo '<pre>';
+        print_r($_POST);
+        echo '</pre>';          
     }
 
 

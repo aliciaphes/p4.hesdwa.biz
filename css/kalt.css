@@ -12,3 +12,7 @@ textarea{
 ul{
     list-style-type: none;
 }
+
+div[id^="tp"]{
+	/*float: left;*/
+}
