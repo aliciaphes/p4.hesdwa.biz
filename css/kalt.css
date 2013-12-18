@@ -1,3 +1,7 @@
+*{
+	font-family: 'Montserrat', Helvetica, sans-serif;
+}
+
 body{
 	/*background-image: url("../img/1.jpg");*/
 	background-size: cover;
@@ -9,6 +13,11 @@ textarea{
     resize: none;
 }
 
+.ui-helper-hidden-accessible{
+	display:none;
+}
+
+
 ul{
     list-style-type: none;
 }
@@ -16,3 +25,5 @@ ul{
 div[id^="tp"]{
 	/*float: left;*/
 }
+
+/*label { display: inline-block; width: 140px; text-align: right; }​*/

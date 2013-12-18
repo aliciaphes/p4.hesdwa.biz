@@ -20,7 +20,7 @@
 			User creation date: <?=Time::display($user->created); ?><br/><br/>
 			Last modified on:   <?=Time::display($user->modified); ?><br/><br/>
 			Last login on:      <?=Time::display($user->last_login); ?><br/><br/>
-			Time zone:          <?=$user->timezone?><br/><br/>
+			Time zone:          <?=$user->uTimezone?><br/><br/>
 
 			Interests:          <?=$user->interests?><br/><br/>
 

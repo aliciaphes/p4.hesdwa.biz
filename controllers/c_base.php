@@ -29,6 +29,7 @@ class base_controller {
 		$client_files_head = Array('/css/bootstrap.min.css',
 								   '/css/bootstrap-responsive.min.css',
 								   '/css/bootstrap-formhelpers.min.css',
+								   '/css/jquery-ui-1.10.3.custom.min.css',
 								   '/css/kalt.css'
 								   //,'http://fonts.googleapis.com/css?family=Montserrat'
 								   );

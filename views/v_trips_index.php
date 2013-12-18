@@ -14,8 +14,8 @@
 				<article>
 
 					<p><?=$trip['date']?></p>
-					<p><?=$trip['beginTime']?></p>
-					<p><?=$trip['endTime']?></p>
+					<p><?=$trip['begin_time']?></p>
+					<p><?=$trip['end_time']?></p>
 					<p><?=$trip['airport']?></p>
 
 				</article>
@@ -28,18 +28,24 @@
 
 	<div class="span3 offset3">
 		
-<?php
+		<?php
 
+		echo "no trips"
+		?>
+		
+
+	</div>
+
+	<br/><br/>
+
+	<?php } ?>
+	<div class="span3 offset3">
+		<?php
 		$interact = new Form();
 		$interact->open('form', "/trips/add", NULL, 'POST');
+
 		?>
 		<button class="btn" type="submit">Add</button>
-	</form>		
-
-		<br/><br/>
-
+	</form>
 </div>
-
-<?php } ?>
-
 </div>

@@ -10,14 +10,15 @@ class trips_controller extends base_controller {
         }  
     }
 
-    public function add($added = NULL) {
+    public function add() {
+    //public function add($added = NULL) {        
 
         # Setup view
         $this->template->content = View::instance('v_trips_add');
         $this->template->title   = "New trip";
 
         # Pass data to the view to check if trip has been added
-        $this->template->content->added = $added;
+        //$this->template->content->added = $added;
 
         # Render template
         echo $this->template;
@@ -27,17 +28,18 @@ class trips_controller extends base_controller {
     public function p_add() {
 
         // # Associate this post with this user
-        // $_POST['user_id']  = $this->user->user_id;
-
-        // # Unix timestamp of when this post was created / modified
-        // $_POST['created']  = Time::now();
-        // $_POST['modified'] = Time::now();
+        $_POST['user_id']  = $this->user->user_id;
+        // $_POST['date']  = Time::now();
+        // $_POST['begin_time'] = Time::now();
+        // $_POST['end_time'] = Time::now();
+        // $_POST['airport'] = Time::now();
+        unset($_POST['country']); //do not include country
 
         // # Insert into database
-        // DB::instance(DB_NAME)->insert('trips', $_POST);
+        DB::instance(DB_NAME)->insert('trips', $_POST);
 
         // # Redirect to show oongas      
-        // Router::redirect("/posts/add/added");
+        //Router::redirect("/trips/add/added");
 
         echo '<pre>';
         print_r($_POST);
@@ -57,7 +59,7 @@ class trips_controller extends base_controller {
         $q = "SELECT *
         FROM trips 
         WHERE user_id = ".$this->user->user_id . 
-        " ORDER BY beginTime,endTime DESC" ;
+        " ORDER BY begin_time,end_time DESC" ;
 
         # Run the query, store the results in the variable $trips
         $trips = DB::instance(DB_NAME)->select_rows($q);

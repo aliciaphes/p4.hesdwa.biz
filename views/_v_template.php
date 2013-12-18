@@ -34,7 +34,7 @@
 					<ul class="dropdown-menu">
 						<li><a href='/users/profile'>My profile</a></li>	
 						<li><a href='/trips/index'>Upcoming trips</a></li>
-						<li><a href='/posts/'>Find fellow travelers</a></li>
+						<li><a href='/'>Find fellow travelers</a></li>
 						<li><a href='/users/logout'>Log out</a></li>
 					</ul>
 				</li>

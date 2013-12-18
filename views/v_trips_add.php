@@ -1,49 +1,64 @@
 
 <!-- comments -->
 
-<div class="container-fluid justified">
+<div class="container-fluid">
 
-	<?php if(isset($added)){ ?>
+	
+	<?php
+	/*if(isset($added)){
 
-	<div class="row-fluid">
-		<div class="span3 offset3">
+		?>
+		<div class="row-fluid">
+			<div class="span3 offset3">
 
-			<!-- <?php if(isset($added)){ ?> -->
+				<!-- <?php if(isset($added)){ ?> -->
 
-			<!-- Display information message if trip has been created: -->
-			<div class='alert alert-success'>	
-				<strong>Trip has been added</strong>
-			</div>
+				<!-- Display information message if trip has been created: -->
+				<div class='alert alert-success'>	
+					<strong>Trip has been added</strong>
+				</div>
+				<!-- <?php } ?> -->
+			</div>	
+		</div>
+	<?php } */
+	?>
+	
 
-			<!-- <?php } ?> -->
-		</div>	
-	</div>
-	<?php } ?>
 
-
-	<div class="row-fluid offset2">
+	<div class="span6 offset2">
 
 		<h3>New trip:</h3>
 
-		<form method="POST" action="/trips/p_add">
+		<form method="POST" action="/trips/p_add" ><!-- class="form-horizontal" -->
 
 			<div class="row-fluid">
-				<div data-name="date" class="span3 bfh-datepicker">
+				<div data-name="date" class="span4 bfh-datepicker">
 				</div>
 			</div>
-
+			<br/>
 			<div class="row-fluid">
-				<div class="span3 bfh-timepicker" data-name="beginTime">
-<!-- http://stackoverflow.com/questions/18365616/how-to-get-the-time-from-bootstrap-formhelper-timepicker -->
+				<div class="span4 bfh-timepicker" data-name="begin_time">
+					<!-- http://stackoverflow.com/questions/18365616/how-to-get-the-time-from-bootstrap-formhelper-timepicker -->
 				</div>
 
-				<div class="span3 bfh-timepicker" data-name="endTime">
+				<div class="span4 bfh-timepicker" data-name="end_time">
 				</div>	
 			</div>
+			<br/>
 
-<input type='password' name='password'>
+			<!-- countries dropdown needs an ID to be passed to data-country attribute of the timezones dropdown -->
+			<div class="bfh-selectbox bfh-countries" id="tripCountry" data-name="country" data-country="US" data-flags="true">
+			</div>
+			<div class="bfh-selectbox bfh-timezones" data-name="tTimezone" data-country="tripCountry">
+			</div>
+
+
+			<br/>
+
+			<input name="airport" class="form-control airport ui-autocomplete-input" placeholder="Airport name" required>	
 
 			<br/><br/>
+
 			<button id="addTrip" class="btn" type="submit">Save</button>
 		</form>
 	</div>
