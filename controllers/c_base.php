@@ -26,7 +26,8 @@ class base_controller {
 			$this->template->set_global('user', $this->user);
 
 		# CSS includes:
-		$client_files_head = Array('/css/bootstrap.min.css',
+		$client_files_head = Array(//'/css/bootstrap2.3.2.min.css',
+								   '/css/bootstrap3.0.0.min.css',			
 								   '/css/bootstrap-responsive.min.css',
 								   '/css/bootstrap-formhelpers.min.css',
 								   '/css/jquery-ui-1.10.3.custom.min.css',

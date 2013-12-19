@@ -139,8 +139,8 @@ class users_controller extends base_controller {
                 # Send them to the main page
                 Router::redirect("/");
             }
-    }     
-}
+        }     
+    }
 
 
 
@@ -163,6 +163,9 @@ class users_controller extends base_controller {
         Router::redirect("/"); 
     }
 
+
+
+
     public function edit() {
 
         if(!$this->user) 
@@ -180,22 +183,65 @@ class users_controller extends base_controller {
 
     public function p_edit() {
 
-        # Sanitize the user entered data
-        $_POST = DB::instance(DB_NAME)->sanitize($_POST);
+        # If user clicked on 'update'
+        if(isset($_POST['update'])){
 
-        $data = Array(
-            "first_name" => $_POST['first_name'],
-            "last_name"  => $_POST['last_name'],
-            "timezone"   => $_POST['timezone'],
-            "modified"   => Time::now()
-            );
+            # Sanitize the user entered data
+            $_POST = DB::instance(DB_NAME)->sanitize($_POST);
 
-        DB::instance(DB_NAME)->update("users", $data, "WHERE user_id = ".$this->user->user_id);
+            $data = Array(
+                "first_name" => $_POST['first_name'],
+                "last_name"  => $_POST['last_name'],
+                "uTimezone"  => $_POST['uTimezone'],
+                "interests"  => $_POST['interests']
+                );
 
-        # Redirect to user's profile
-        Router::redirect('/users/profile');
 
+            $user_details = DB::instance(DB_NAME)->select_row(
+                "SELECT first_name, last_name, uTimezone, interests
+                FROM users WHERE user_id = ".$this->user->user_id);
+
+            # If entered data is not the same as current info in DB, we change mod.date
+            if(array_diff($data, $user_details)){
+                $data["modified"] = Time::now();
+            }
+
+
+            // $data = Array(
+            //     "first_name" => $_POST['first_name'],
+            //     "last_name"  => $_POST['last_name'],
+            //     "uTimezone"  => $_POST['uTimezone'],
+            //     "interests"  => $_POST['interests'],
+            //     "modified"   => Time::now()
+            //     );
+
+
+            // echo '<pre>';
+            // print_r($data);
+            // echo '</pre>';  
+
+
+            // echo '<pre>';
+            // print_r($user_details);
+            // echo '</pre>';  
+
+
+            DB::instance(DB_NAME)->update("users", $data, "WHERE user_id = ".$this->user->user_id);
+
+            # Redirect to user's profile
+            Router::redirect('/users/profile');
+
+
+        }
+        # Otherwise, user clicked on 'cancel'
+        else{
+            # Redirect to user's profile
+            Router::redirect('/users/profile');
+        }
     }
+
+
+
 
 
 

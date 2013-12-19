@@ -1,29 +1,32 @@
-*{
-	font-family: 'Montserrat', Helvetica, sans-serif;
-}
+/*font-family: inherit for every element*/
 
 body{
+	font-family: 'Montserrat', Helvetica, sans-serif;
 	/*background-image: url("../img/1.jpg");*/
 	background-size: cover;
 	background-repeat: no-repeat;	
 }
 
 /*textarea[name=foo] {*/
-textarea{
-    resize: none;
-}
+	textarea{
+		font-family: inherit;
+		text-align:left; /*doesnt work*/		
+		resize: none;
+	}
 
-.ui-helper-hidden-accessible{
-	display:none;
-}
+	.ui-helper-hidden-accessible{
+		font-family: inherit;	
+		display:none;
+	}
 
 
-ul{
-    list-style-type: none;
-}
+	ul{
+		font-family: inherit;	
+		list-style-type: none;
+	}
 
-div[id^="tp"]{
-	/*float: left;*/
-}
+/*div[id^="tp"]{
+	float: left;
+	}*/
 
 /*label { display: inline-block; width: 140px; text-align: right; }​*/
