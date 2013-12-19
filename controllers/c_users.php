@@ -206,20 +206,9 @@ class users_controller extends base_controller {
                 $data["modified"] = Time::now();
             }
 
-
-            // $data = Array(
-            //     "first_name" => $_POST['first_name'],
-            //     "last_name"  => $_POST['last_name'],
-            //     "uTimezone"  => $_POST['uTimezone'],
-            //     "interests"  => $_POST['interests'],
-            //     "modified"   => Time::now()
-            //     );
-
-
             // echo '<pre>';
             // print_r($data);
             // echo '</pre>';  
-
 
             // echo '<pre>';
             // print_r($user_details);

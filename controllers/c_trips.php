@@ -10,8 +10,8 @@ class trips_controller extends base_controller {
         }  
     }
 
-    public function add() {
-    //public function add($added = NULL) {        
+    //public function add() {
+    public function add() {        
 
         # Setup view
         $this->template->content = View::instance('v_trips_add');
@@ -27,29 +27,38 @@ class trips_controller extends base_controller {
 
     public function p_add() {
 
-        // # Associate this post with this user
-        $_POST['user_id']  = $this->user->user_id;
-        // $_POST['date']  = Time::now();
-        // $_POST['begin_time'] = Time::now();
-        // $_POST['end_time'] = Time::now();
-        // $_POST['airport'] = Time::now();
-        unset($_POST['country']); //do not include country
+        # If user clicked on 'save'
+        if(isset($_POST['saveTrip'])){
 
-        // # Insert into database
-        DB::instance(DB_NAME)->insert('trips', $_POST);
+            # Associate this post with this user
+            $_POST['user_id']  = $this->user->user_id;
+            // $_POST['date']  = Time::now();
+            // $_POST['begin_time'] = Time::now();
+            // $_POST['end_time'] = Time::now();
+            // $_POST['airport'] = Time::now();
 
-        // # Redirect to show oongas      
-        //Router::redirect("/trips/add/added");
+            # Do not include country nor the button
+            unset($_POST['country']);
+            unset($_POST['saveTrip']);
 
-        echo '<pre>';
-        print_r($_POST);
-        echo '</pre>';          
+            # Insert into database
+            DB::instance(DB_NAME)->insert('trips', $_POST);
+
+            # Redirect to show trips      
+            //Router::redirect("/trips/add/added");
+            Router::redirect("/trips/index/added");
+        }
+
+        else{
+            # Redirect to show trips      
+            Router::redirect("/trips/index");
+        } 
     }
 
 
 
 
-    public function index() {
+    public function index($added = NULL) {
 
         # Set up the View
         $this->template->content = View::instance('v_trips_index');
@@ -59,13 +68,16 @@ class trips_controller extends base_controller {
         $q = "SELECT *
         FROM trips 
         WHERE user_id = ".$this->user->user_id . 
-        " ORDER BY begin_time,end_time DESC" ;
+        " ORDER BY date,begin_time,end_time DESC" ;
 
         # Run the query, store the results in the variable $trips
         $trips = DB::instance(DB_NAME)->select_rows($q);
 
         # Pass data to the View
         $this->template->content->trips = $trips;
+
+        # Check if trip has been added
+        $this->template->content->added = $added;
 
         // # Render the View
         echo $this->template;

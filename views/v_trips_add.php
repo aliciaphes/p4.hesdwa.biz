@@ -3,28 +3,6 @@
 
 <div class="container-fluid">
 
-	
-	<?php
-	/*if(isset($added)){
-
-		?>
-		<div class="row-fluid">
-			<div class="span3 offset3">
-
-				<!-- <?php if(isset($added)){ ?> -->
-
-				<!-- Display information message if trip has been created: -->
-				<div class='alert alert-success'>	
-					<strong>Trip has been added</strong>
-				</div>
-				<!-- <?php } ?> -->
-			</div>	
-		</div>
-	<?php } */
-	?>
-	
-
-
 	<div class="span6 offset2">
 
 		<h3>New trip:</h3>
@@ -55,11 +33,12 @@
 
 			<br/>
 
-			<input name="airport" class="form-control airport ui-autocomplete-input" placeholder="Airport name" required>	
+			<input name="airport" class="form-control airport ui-autocomplete-input" placeholder="Airport name">	
 
 			<br/><br/>
 
-			<button id="addTrip" class="btn" type="submit">Save</button>
+			<button name="saveTrip" class="btn" type="submit">Save</button>
+			<button class="btn" type="submit">Cancel</button>
 		</form>
 	</div>
 

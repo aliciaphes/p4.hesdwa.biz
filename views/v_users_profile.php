@@ -45,31 +45,32 @@
 
 
 				<label for="inputFirstName">First name</label>
-				<input type="text" class="input-block-level form-control uneditable-input" id="inputFirstName" value="<?= $user->first_name ?>">
+				<!-- add class uneditable-input seems to do nothing -->
+				<input type="text" class="input-block-level form-control" id="inputFirstName" value="<?= $user->first_name ?>" readonly>
 
 				<br/>
 				<label for="inputLastName">Last name</label>
-				<input type="text" class="input-block-level form-control uneditable-input" id="inputLastName" value="<?= $user->last_name ?>">
+				<input type="text" class="input-block-level form-control" id="inputLastName" value="<?= $user->last_name ?>" readonly>
 
 				<br/>
 				<label for="inputEmail">Email</label>
-				<input type="text" class="input-block-level form-control uneditable-input" id="inputEmail" value="<?= $user->email ?>">
+				<input type="text" class="input-block-level form-control" id="inputEmail" value="<?= $user->email ?>" readonly>
 
 				<br/>
 				<label for="inputUcd">User creation date</label>
-				<input type="text" class="input-block-level form-control uneditable-input" id="inputUcd" value="<?=Time::display($user->created); ?>">
+				<input type="text" class="input-block-level form-control" id="inputUcd" value="<?=Time::display($user->created); ?>" readonly>
 
 				<br/>
 				<label for="inputLmo">Last modified on</label>
-				<input type="text" class="input-block-level form-control uneditable-input" id="inputLmo" value="<?=Time::display($user->modified); ?>">
+				<input type="text" class="input-block-level form-control" id="inputLmo" value="<?=Time::display($user->modified); ?>" readonly>
 
 				<br/>
 				<label for="inputLlo">Last login on</label>
-				<input type="text" class="input-block-level form-control uneditable-input" id="inputLlo" value="<?=Time::display($user->last_login); ?>">
+				<input type="text" class="input-block-level form-control" id="inputLlo" value="<?=Time::display($user->last_login); ?>" readonly>
 
 				<br/>
 				<label for="inputTimezone">Time zone</label>
-				<input type="text" class="input-block-level form-control uneditable-input" id="inputLastName" value="<?= $user->uTimezone ?>">
+				<input type="text" class="input-block-level form-control" id="inputTimezone" value="<?= $user->uTimezone ?>" readonly>
 
 				<br/>
 				<label for="inputInterests">Interests</label>

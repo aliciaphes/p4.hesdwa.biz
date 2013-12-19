@@ -49,10 +49,14 @@
 
 <?php if(isset($content)) echo $content; ?>
 
-<?php if(isset($client_files_body)) echo $client_files_body; ?>
-
+<br/>
 <footer>
 	<p>&#169; Project 4 - 2013 - ALicia Perez</p>
-</footer>	
+</footer>
+
+
+<?php if(isset($client_files_body)) echo $client_files_body; ?>
+
+	
 </body>
 </html>
