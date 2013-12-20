@@ -4,15 +4,15 @@
 
 	<h3 id="historyTitle">My history:</h3><br/>
 
-		<?php if(count($history) > 0){ ?>
+	<?php if(count($history) > 0){ ?>
 
-<div id="tripsHistory">
+	<div id="tripsHistory">
 		<table class="table table-bordered">
 
 			<thead>  
 				<tr>
 					<th></th> 
-					<th>Trip ID</th> 
+					<!-- <th>Trip ID</th> --> 
 					<th>Date</th>  
 					<th>Airport</th>  
 					<th>From</th>  
@@ -26,7 +26,7 @@
 				<tr>
 					<form method="POST" action="/trips/p_delete/">
 						<td><button class="btn" type="submit" name="row<?= $item['trip_id'] ?>" value="<?= $item['trip_id'] ?>">Delete</button></td>  
-						<td><?=$item['trip_id']?></td>
+						<td class="hidden"><?=$item['trip_id']?></td>
 						<td><?=$item['date']?></td>
 						<td><?=$item['airport']?></td>  
 						<td><?=$item['begin_time']?></td>  
@@ -40,19 +40,15 @@
 	</table>
 </div>
 
-	<br/>
-	<?php
+<br/>
+<?php
 
 }else{ ?>
 
-<div class="span3 offset3">
-
-	<?php
-
-	echo "no history"
-	?>
-
-</div>
+<div class="span3 offset2 alert alert-danger">	
+		<strong>There is no history to show</strong>
+		<br/>
+	</div>
 
 <?php } /*end else*/?>
 

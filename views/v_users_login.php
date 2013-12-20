@@ -28,7 +28,7 @@
 			<!-- Show error messages in case of incorrect login: -->
 			
 			<?php if(isset($error) && $error=='error'): ?>
-				<div class='alert alert-error'>	
+				<div class='alert alert-danger'>	
 					<strong>The specified combination email/password does not exist. Please try again.</strong>
 				<br/>
 				</div>
@@ -36,7 +36,7 @@
 			<?php endif;
 
 			if(isset($error) && $error=='wrong_email'): ?>
-				<div class='alert alert-error'>	
+				<div class='alert alert-danger'>	
 					<strong>Wrong format in email address. Please correct.</strong>
 				<br/>
 				</div>

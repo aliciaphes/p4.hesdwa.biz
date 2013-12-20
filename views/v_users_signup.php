@@ -53,7 +53,7 @@
 			<!-- Error handling -->
 			<?php if(isset($error) && $error=='error'): ?>
 			
-				<div class='alert alert-error'>	
+				<div class='alert alert-danger'>	
 					<strong>The specified email already exists. Please log in or try again.</strong>
 				</div>
 				<br>
@@ -67,7 +67,7 @@
 			<?php endif; ?>
 
 			<?php if(isset($error)&& $error=='wrong_email'): ?>
-				<div class='alert alert-error'>	
+				<div class='alert alert-danger'>	
 					<strong>Wrong format in email address. Please correct.</strong>
 				</div>
 				<br>

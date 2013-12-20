@@ -42,7 +42,6 @@
 				<br/>
 				<!-- ************************************************************************ -->
 
-
 				<label for="inputFirstName">First name</label>
 				<!-- add class uneditable-input seems to do nothing -->
 				<input type="text" class="input-block-level form-control" id="inputFirstName" value="<?= $user->first_name ?>" readonly>
@@ -72,8 +71,24 @@
 				<input type="text" class="input-block-level form-control" id="inputTimezone" value="<?= $user->uTimezone ?>" readonly>
 
 				<br/>
+
+
+
+<!-- <?php echo $user->interests; ?><br/> -->
+<!-- <?php echo nl2br($user->interests); ?><br/> -->
+
+<?php 
+
+
+
+?>
+
+
+				<?php $intext = nl2br($user->interests, false); ?>
+				<!-- str_replace(array("\r\n", "\r", "\n"), "<br />", $user->interests); -->
 				<label for="inputInterests">Interests</label>
 				<textarea class="form-control" id="inputInterests" maxlength='255' cols='50' rows='10' readonly><?php echo $user->interests; ?></textarea>
+				
 
 
 				<br/><br/>

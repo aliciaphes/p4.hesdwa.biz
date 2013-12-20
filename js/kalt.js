@@ -13,6 +13,8 @@ $( document ).ready(function() {
 	//console.log($("#appPath").val());
 
 
+	$(".hidden").hide();
+
 
 	$("#clearForm").click(function() {
 

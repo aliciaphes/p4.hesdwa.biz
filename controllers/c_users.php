@@ -202,9 +202,6 @@ class users_controller extends base_controller {
         # If user clicked on 'update'
         if(isset($_POST['update'])){
 
-            # Sanitize the user entered data
-            $_POST = DB::instance(DB_NAME)->sanitize($_POST);
-
             $data = Array(
                 "first_name" => $_POST['first_name'],
                 "last_name"  => $_POST['last_name'],
