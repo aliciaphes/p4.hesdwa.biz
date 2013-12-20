@@ -3,7 +3,7 @@
 
 <?php
 	if($user)
-		Router::redirect("/users/profile/");
+		Router::redirect("/trips/index/");
 	else
 		Router::redirect("/users/login/");		
 ?>

@@ -80,6 +80,22 @@ class users_controller extends base_controller {
     }
 
 
+    public function success() {
+
+        if(!$this->user) 
+            Router::redirect('/users/login');
+        else{
+        # Setup view
+            $this->template->content = View::instance('v_users_success');
+            $this->template->title = 'Success!';
+
+        # Render template
+            echo $this->template;   
+        }  
+    }
+
+
+
     public function login($error = NULL) {
 
         # Setup view
@@ -236,14 +252,26 @@ class users_controller extends base_controller {
 
     public function profile($user_name = NULL) {
 
+        if(!$this->user) 
+            Router::redirect('/users/login');
+        else{
         # Create a new View instance
-        $this->template->content = View::instance('v_users_profile');
-        $this->template->title   = "Your profile";
+            $this->template->content = View::instance('v_users_profile');
+            $this->template->title   = "Your profile";
 
-        $this->template->user_name = $user_name;
+            $this->template->user_name = $user_name;
 
         # Render template
-        echo $this->template;  
+            echo $this->template; 
+        } 
+
+
+
+
+
+
+
+        
 
     }
 

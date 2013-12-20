@@ -5,7 +5,6 @@
 <!-- We do not need to check if the user is logged in because otherwise
 	we would have been redirected to the login page -->
 
-	<?php if($user): ?>
 	<div class="container-fluid">
 		
 		<div class="row-fluid">
@@ -41,7 +40,7 @@
 					<?=$user->interests?>
 				</textarea> -->
 				<br/>
-<!-- ************************************************************************ -->
+				<!-- ************************************************************************ -->
 
 
 				<label for="inputFirstName">First name</label>
@@ -87,7 +86,3 @@
 
 		</div>
 	</div>
-
-<?php else : ?>
-	<?php echo "No user logged" ?>
-<?php endif; ?>
