@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
 
-	<div class="span4 offset4 oongabox">
+	<div class="span4 offset4">
 
 		<h3>You have successfully signed up</h3>
 

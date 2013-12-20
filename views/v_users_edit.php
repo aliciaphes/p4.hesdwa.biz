@@ -7,9 +7,9 @@
 
 	<div class="row-fluid">
 
-		<div class="span5 offset2 oongabox">
+		<div class="span5 offset3">
 
-			<form method='POST' action="/users/p_edit" class="form-horizontal">			
+			<form method='POST' action="/users/p_edit" class="form-horizontal" id="userEdit">			
 
 				<h3><?php echo "Edit your profile"; ?></h3><br/>
 
@@ -24,10 +24,10 @@
 
 				<br/>
 				<label for="inputTimezone">Time zone <?php if(!empty($user->uTimezone)) echo "(previously ".$user->uTimezone.")"; ?></label>
-				<div class="bfh-selectbox bfh-countries" id="userCountry" data-flags="true">
+				<div class="bfh-selectbox bfh-countries" id="inputUserCountry" data-flags="true">
 				</div>
 				<!-- data-timezone="<?php echo $user->timezone; ?>"> -->
-				<div class="bfh-selectbox bfh-timezones" data-country="userCountry" data-name="uTimezone">
+				<div class="bfh-selectbox bfh-timezones" data-country="inputUserCountry" data-name="uTimezone">
 				</div>				
 
 				<br/>
@@ -36,13 +36,18 @@
 
 
 				<br/><br/>
-				<button class="btn" type="submit" name="update">Update</button>
+				<div class="row-fluid">
+					<button class="btn" type="submit" name="update">Update</button>
 
-				<button class="btn" type="submit" name="cancel">Cancel</button>
-<!-- 				<form method='POST' action="/users/profile" class="form-horizontal">
-					<button class="btn" type="submit">Cancel</button>
-				</form> -->
+					<button class="btn" type="submit" name="cancel">Cancel</button>
+
+					<!-- <button class="btn btn-primary offset1" name="clear" id="clearForm">Clear all</button> -->
+				</div>
+
 			</form>
+			<br/>
+			<button class="btn btn-primary" name="clear" id="clearForm">Clear all</button>
+
 		</div>
 	</div>
 </div>

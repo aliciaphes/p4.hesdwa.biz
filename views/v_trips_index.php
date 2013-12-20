@@ -1,6 +1,6 @@
 <!-- Comment -->
 
-<div class="container-fluid span8 offset2">
+<div class="container-fluid span8 offset3">
 
 	<h3>My upcoming trips:</h3><br/>
 
@@ -21,10 +21,10 @@
 				<!-- <?php } ?> -->
 			</div>	
 		</div>
-	<?php } ?>
+		<?php } ?>
 
 
-	<?php if(count($trips) > 0){ ?>
+		<?php if(count($upcoming) > 0){ ?>
 
 		<table class="table table-bordered">
 
@@ -40,7 +40,7 @@
 			</thead> 
 			<tbody>
 
-				<?php foreach($trips as $trip): ?>
+				<?php foreach($upcoming as $trip): ?>
 				<tr>  
 					<td><?=$trip['trip_id']?></td>  
 					<td><?=$trip['date']?></td>
@@ -49,13 +49,13 @@
 					<td><?=$trip['end_time']?></td>
 					<td><?=$trip['tTimezone']?></td> 
 				</tr>
-				<?php endforeach; ?>
+			<?php endforeach; ?>
 
-			</tbody>
-		</table>
+		</tbody>
+	</table>
 
-<br/>
-<?php
+	<br/>
+	<?php
 
 }else{ ?>
 
@@ -72,13 +72,19 @@
 <br/><br/>
 
 <?php } ?>
-<div class="span3 offset3">
+<div class="span3">
 	<?php
-	$interact = new Form();
-	$interact->open('form', "/trips/add", NULL, 'POST');
-
+	$add = new Form();
+	$add->open('form', "/trips/add", NULL, 'POST');
 	?>
-	<button class="btn" type="submit">Add new trip</button>
-</form>
+		<button class="btn" type="submit">Add new trip</button>
+	</form>
 </div>
+
+<!-- 	<?php
+	$history = new Form();
+	$history->open('form', "/trips/history", NULL, 'POST');
+	?>
+	<button class="btn" type="submit">Show history</button> -->
+</form>
 </div>

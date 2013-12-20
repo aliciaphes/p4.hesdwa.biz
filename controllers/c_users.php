@@ -85,11 +85,11 @@ class users_controller extends base_controller {
         if(!$this->user) 
             Router::redirect('/users/login');
         else{
-        # Setup view
+            # Setup view
             $this->template->content = View::instance('v_users_success');
             $this->template->title = 'Success!';
 
-        # Render template
+            # Render template
             echo $this->template;   
         }  
     }
@@ -238,11 +238,16 @@ class users_controller extends base_controller {
 
 
         }
-        # Otherwise, user clicked on 'cancel'
-        else{
+        # Otherwise, user clicked on 'cancel' (we ignore the 'clear' button)
+        elseif(isset($_POST['cancel'])){
             # Redirect to user's profile
             Router::redirect('/users/profile');
         }
+        # Otherwise, user clicked on 'cancel' (we ignore the 'clear' button)
+        // elseif(isset($_POST['clear'])){
+        //     # Redirect to user's profile
+        //     Router::redirect('/users/edit');
+        // }        
     }
 
 
@@ -271,7 +276,7 @@ class users_controller extends base_controller {
 
 
 
-        
+
 
     }
 

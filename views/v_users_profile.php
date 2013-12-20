@@ -9,7 +9,7 @@
 		
 		<div class="row-fluid">
 
-			<div class="span5 offset2">
+			<div class="span5 offset3">
 				<h3>Your profile</h3>
 
 

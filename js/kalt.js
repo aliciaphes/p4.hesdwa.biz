@@ -12,10 +12,21 @@ $( document ).ready(function() {
 
 	//console.log($("#appPath").val());
 
+
+
+	$("#clearForm").click(function() {
+
+		console.log("clearing");
+		$("#userEdit [id^='input']:visible").val(""); //$("#survey11Form input[type=text]:visible")
+
+	}); 
+
+
+
+
+
 	//use of AJAX for an autocompleter for the airport list using an external file in JSON
 	$('.airport').autocomplete({
-
-
 
 		source: function(request, response) {
 
@@ -42,5 +53,8 @@ $( document ).ready(function() {
 
 
 	});//end of autocomplete
+
 }); //end of file
+
+
 //<?php echo '</script>'; ?>

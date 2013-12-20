@@ -35,7 +35,6 @@ class trips_controller extends base_controller {
             // $_POST['date']  = Time::now();
             // $_POST['begin_time'] = Time::now();
             // $_POST['end_time'] = Time::now();
-            // $_POST['airport'] = Time::now();
 
             # Do not include country nor the button
             unset($_POST['country']);
@@ -45,7 +44,6 @@ class trips_controller extends base_controller {
             DB::instance(DB_NAME)->insert('trips', $_POST);
 
             # Redirect to show trips      
-            //Router::redirect("/trips/add/added");
             Router::redirect("/trips/index/added");
         }
 
@@ -54,7 +52,6 @@ class trips_controller extends base_controller {
             Router::redirect("/trips/index");
         } 
     }
-
 
 
 
@@ -73,8 +70,34 @@ class trips_controller extends base_controller {
         # Run the query, store the results in the variable $trips
         $trips = DB::instance(DB_NAME)->select_rows($q);
 
+        # save current date
+        $today = Time::now();
+
+        $upcoming = array();
+
+        # remove items from the past
+        foreach($trips as $row => $innerArray){
+          foreach($innerArray as $innerRow => $value){
+            if($innerRow == 'date'){
+                if(strtotime($value) < $today){
+                    // echo "borrando ";
+                    // print_r($innerArray);
+                    // echo "<br>";
+                    unset($innerArray);
+                }
+                else{
+                    array_push($upcoming, $innerArray);
+                }
+            }
+          }
+        }
+
+        // echo '<pre>';
+        // print_r($upcoming);
+        // echo '</pre>';
+
         # Pass data to the View
-        $this->template->content->trips = $trips;
+        $this->template->content->upcoming = $upcoming;
 
         # Check if trip has been added
         $this->template->content->added = $added;
@@ -84,6 +107,52 @@ class trips_controller extends base_controller {
     }
 
 
+
+
+
+    public function history() {
+
+        # Set up the View
+        $this->template->content = View::instance('v_trips_history');
+        $this->template->title   = $this->user->first_name."'s history";
+
+        # Query
+        $q = "SELECT *
+        FROM trips 
+        WHERE user_id = ".$this->user->user_id . 
+        " ORDER BY date,begin_time,end_time DESC" ;
+
+        # Run the query, store the results in the variable $list
+        $list = DB::instance(DB_NAME)->select_rows($q);
+
+        # save current date
+        $today = Time::now();
+
+        $history = array();
+
+        # remove items from the past
+        foreach($list as $row => $innerArray){
+          foreach($innerArray as $innerRow => $value){
+            if($innerRow == 'date'){
+                if(strtotime($value) >= $today){
+                    // echo "borrando ";
+                    // print_r($innerArray);
+                    // echo "<br>";
+                    unset($innerArray);
+                }
+                else{
+                    array_push($history, $innerArray);
+                }
+            }
+          }
+        }
+
+        # Pass data to the View
+        $this->template->content->history = $history;
+
+        # Render the View
+        echo $this->template;
+    }
 
 
 } # end of the class
