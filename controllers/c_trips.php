@@ -10,8 +10,29 @@ class trips_controller extends base_controller {
         }  
     }
 
-    //public function add() {
-    public function add() {        
+
+    public function p_delete(){
+
+        $_POST = DB::instance(DB_NAME)->sanitize($_POST);
+
+        $buttonPressed = array_keys($_POST)[0];
+        //echo $buttonPressed;
+
+        $trip_id = array_values($_POST)[0];
+        //echo $trip_id;
+
+        if(isset($_POST[$buttonPressed])){
+
+            DB::instance(DB_NAME)->delete('trips', "WHERE trip_id = ".$trip_id);
+
+            Router::redirect('/trips/history');
+        }
+
+    }
+
+
+
+    public function add(){
 
         # Setup view
         $this->template->content = View::instance('v_trips_add');
@@ -32,7 +53,7 @@ class trips_controller extends base_controller {
 
             # Associate this post with this user
             $_POST['user_id']  = $this->user->user_id;
-            // $_POST['date']  = Time::now();
+            $_POST['begdaTimeFmt'] = strtotime($_POST['date']);
             // $_POST['begin_time'] = Time::now();
             // $_POST['end_time'] = Time::now();
 
@@ -65,7 +86,7 @@ class trips_controller extends base_controller {
         $q = "SELECT *
         FROM trips 
         WHERE user_id = ".$this->user->user_id . 
-        " ORDER BY date,begin_time,end_time DESC" ;
+        " ORDER BY begdaTimeFmt,begin_time,end_time DESC" ;
 
         # Run the query, store the results in the variable $trips
         $trips = DB::instance(DB_NAME)->select_rows($q);
@@ -78,8 +99,8 @@ class trips_controller extends base_controller {
         # remove items from the past
         foreach($trips as $row => $innerArray){
           foreach($innerArray as $innerRow => $value){
-            if($innerRow == 'date'){
-                if(strtotime($value) < $today){
+            if($innerRow == 'begdaTimeFmt'){
+                if($value < $today){
                     // echo "borrando ";
                     // print_r($innerArray);
                     // echo "<br>";
@@ -89,70 +110,70 @@ class trips_controller extends base_controller {
                     array_push($upcoming, $innerArray);
                 }
             }
-          }
         }
+    }
 
         // echo '<pre>';
         // print_r($upcoming);
         // echo '</pre>';
 
         # Pass data to the View
-        $this->template->content->upcoming = $upcoming;
+    $this->template->content->upcoming = $upcoming;
 
         # Check if trip has been added
-        $this->template->content->added = $added;
+    $this->template->content->added = $added;
 
         // # Render the View
-        echo $this->template;
-    }
+    echo $this->template;
+}
 
 
 
 
 
-    public function history() {
+public function history() {
 
         # Set up the View
-        $this->template->content = View::instance('v_trips_history');
-        $this->template->title   = $this->user->first_name."'s history";
+    $this->template->content = View::instance('v_trips_history');
+    $this->template->title   = $this->user->first_name."'s history";
 
         # Query
-        $q = "SELECT *
-        FROM trips 
-        WHERE user_id = ".$this->user->user_id . 
-        " ORDER BY date,begin_time,end_time DESC" ;
+    $q = "SELECT *
+    FROM trips 
+    WHERE user_id = ".$this->user->user_id . 
+    " ORDER BY date,begin_time,end_time ASC" ;
 
         # Run the query, store the results in the variable $list
-        $list = DB::instance(DB_NAME)->select_rows($q);
+    $list = DB::instance(DB_NAME)->select_rows($q);
 
         # save current date
-        $today = Time::now();
+    $today = Time::now();
 
-        $history = array();
+    $history = array();
 
         # remove items from the past
-        foreach($list as $row => $innerArray){
-          foreach($innerArray as $innerRow => $value){
-            if($innerRow == 'date'){
-                if(strtotime($value) >= $today){
+    foreach($list as $row => $innerArray){
+      foreach($innerArray as $innerRow => $value){
+        if($innerRow == 'date'){
+            if(strtotime($value) >= $today){
                     // echo "borrando ";
                     // print_r($innerArray);
                     // echo "<br>";
-                    unset($innerArray);
-                }
-                else{
-                    array_push($history, $innerArray);
-                }
+                unset($innerArray);
             }
-          }
+            else{
+                array_push($history, $innerArray);
+            }
         }
+    }
+}
 
         # Pass data to the View
-        $this->template->content->history = $history;
+$this->template->content->history = $history;
 
         # Render the View
-        echo $this->template;
-    }
+echo $this->template;
+}
 
 
 } # end of the class

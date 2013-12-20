@@ -2,7 +2,7 @@
 
 <div class="container-fluid span8 offset3">
 
-	<h3>My upcoming trips:</h3><br/>
+	<h3 id="upcomingTitle">My upcoming trips:</h3><br/>
 
 
 	<?php
@@ -26,6 +26,7 @@
 
 		<?php if(count($upcoming) > 0){ ?>
 
+<div id="tripsIndex">
 		<table class="table table-bordered">
 
 			<thead>  
@@ -53,6 +54,7 @@
 
 		</tbody>
 	</table>
+</div>
 
 	<br/>
 	<?php

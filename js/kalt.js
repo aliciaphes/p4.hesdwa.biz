@@ -17,10 +17,35 @@ $( document ).ready(function() {
 	$("#clearForm").click(function() {
 
 		console.log("clearing");
-		$("#userEdit [id^='input']:visible").val(""); //$("#survey11Form input[type=text]:visible")
+		$("#userEdit [id^='input']:visible").val("");
 
 	}); 
 
+
+
+	if($("#upcomingTitle").is(":visible")){
+
+		$("#tripsIndex").animate({
+				height: "toggle"
+			}, 500);	
+	}
+
+
+	if($("#historyTitle").is(":visible")){
+
+		$("#tripsHistory").animate({
+				height: "toggle"
+			}, 500);	
+	}
+
+
+
+$("[name^='row']").click(function() {
+
+    var del=confirm("Are you sure you want to delete this record?");
+
+    return del;
+});
 
 
 

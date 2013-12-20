@@ -25,6 +25,12 @@ body{
 		list-style-type: none;
 	}
 
+
+#tripsIndex, #tripsHistory{
+	display: none;
+}
+
+
 /*div[id^="tp"]{
 	float: left;
 	}*/
