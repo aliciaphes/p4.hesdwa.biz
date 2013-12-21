@@ -1,5 +1,5 @@
-<!-- This is the view where the user can change his profile -->
 
+<!-- This is the view where the user can change his profile -->
 
 <?php if(isset($user->token)){ ?>
 
@@ -26,7 +26,7 @@
 				<label for="inputTimezone">Time zone <?php if(!empty($user->uTimezone)) echo "(previously ".$user->uTimezone.")"; ?></label>
 				<div class="bfh-selectbox bfh-countries" id="inputUserCountry" data-flags="true">
 				</div>
-				<!-- data-timezone="<?php echo $user->timezone; ?>"> -->
+
 				<div class="bfh-selectbox bfh-timezones" data-country="inputUserCountry" data-name="uTimezone">
 				</div>				
 
@@ -41,7 +41,6 @@
 
 					<button class="btn" type="submit" name="cancel">Cancel</button>
 
-					<!-- <button class="btn btn-primary offset1" name="clear" id="clearForm">Clear all</button> -->
 				</div>
 
 			</form>

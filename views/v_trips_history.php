@@ -1,4 +1,4 @@
-<!-- Comment -->
+<!-- View where the user can display his traveling history -->
 
 <div class="container-fluid span8 offset3">
 
@@ -7,12 +7,11 @@
 	<?php if(count($history) > 0){ ?>
 
 	<div id="tripsHistory">
-		<table class="table table-bordered">
+		<table class="table">
 
 			<thead>  
 				<tr>
 					<th></th> 
-					<!-- <th>Trip ID</th> --> 
 					<th>Date</th>  
 					<th>Airport</th>  
 					<th>From</th>  
@@ -45,12 +44,12 @@
 
 }else{ ?>
 
-<div class="span3 offset2 alert alert-danger">	
+	<div class="span3 offset2 alert alert-danger">	
 		<strong>There is no history to show</strong>
 		<br/>
 	</div>
 
-<?php } /*end else*/?>
+<?php } /*end else*/ ?>
 
 
 </div>

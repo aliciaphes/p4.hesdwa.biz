@@ -12,35 +12,7 @@
 			<div class="span5 offset3">
 				<h3>Your profile</h3>
 
-
-<!-- 			<label>First name</label>
-				<span class="input-xlarge uneditable-input"><?= $user->first_name ?></span><br/>
-
-				<label>Last name</label>
-				<span class="input-xlarge uneditable-input"><?= $user->last_name ?></span><br/>
-
-				<label>Email</label>
-				<span class="input-xlarge uneditable-input"><?= $user->email ?></span><br/>
-
-				<label>User creation date</label>
-				<span class="input-xlarge uneditable-input"><?=Time::display($user->created); ?></span><br/>
-
-				<label>Last modified on</label>
-				<span class="input-xlarge uneditable-input"><?=Time::display($user->modified); ?></span><br/>
-
-				<label>Last login on</label>
-				<span class="input-xlarge uneditable-input"><?=Time::display($user->last_login); ?></span><br/>
-
-				<label>Time zone</label>
-				<span class="input-xlarge uneditable-input"><?= $user->uTimezone ?></span><br/>
-
-
-				<label>Interests</label>
-				<textarea class="form-control" name='interests' id="inputInterests" maxlength='255' cols='50' rows='10' readonly>
-					<?=$user->interests?>
-				</textarea> -->
 				<br/>
-				<!-- ************************************************************************ -->
 
 				<label for="inputFirstName">First name</label>
 				<!-- add class uneditable-input seems to do nothing -->
@@ -73,19 +45,11 @@
 				<br/>
 
 
-
-<!-- <?php echo $user->interests; ?><br/> -->
-<!-- <?php echo nl2br($user->interests); ?><br/> -->
-
 <?php 
-
-
 
 ?>
 
-
 				<?php $intext = nl2br($user->interests, false); ?>
-				<!-- str_replace(array("\r\n", "\r", "\n"), "<br />", $user->interests); -->
 				<label for="inputInterests">Interests</label>
 				<textarea class="form-control" id="inputInterests" maxlength='255' cols='50' rows='10' readonly><?php echo $user->interests; ?></textarea>
 				

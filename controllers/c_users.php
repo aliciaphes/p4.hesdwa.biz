@@ -54,7 +54,7 @@ class users_controller extends base_controller {
 
                 $_POST['created']  = Time::now();
                 $_POST['modified'] = Time::now();
-                $_POST['timezone'] = TIMEZONE;
+                $_POST['uTimezone'] = TIMEZONE;
 
                 # Encrypt the password  
                 $_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);            
@@ -73,26 +73,28 @@ class users_controller extends base_controller {
                     die("<h2>There's been an error creating your credentials</h2>");
                 }
 
-                # Send them to the success page
-                Router::redirect('/users/success');        
+                # Auto login user:
+                $this->login_success($_POST['token']);
+
+                # Send them to the main page
+                Router::redirect('/trips/index');                
             }
         }
     }
 
 
-    public function success() {
+    public function login_success($token) {
 
-        if(!$this->user) 
-            Router::redirect('/users/login');
-        else{
-            # Setup view
-            $this->template->content = View::instance('v_users_success');
-            $this->template->title = 'Success!';
+        # Store this token in a cookie
+        setcookie("token", $token, strtotime('+1 year'), '/');
 
-            # Render template
-            echo $this->template;   
-        }  
+        # update last login date:
+        $data = Array();
+        $data["last_login"] = Time::now();
+
+        DB::instance(DB_NAME)->update("users", $data, "WHERE token  = '".$token."'");  
     }
+
 
 
 
@@ -143,14 +145,7 @@ class users_controller extends base_controller {
 
             else{ # login succeeded:
 
-                # Store this token in a cookie
-                setcookie("token", $token, strtotime('+1 year'), '/');
-
-                # update last login date:
-                $data = Array();
-                $data["last_login"] = Time::now();
-
-                DB::instance(DB_NAME)->update("users", $data, "WHERE token  = '".$token."'");
+                $this->login_success($token);
 
                 # Send them to the main page
                 Router::redirect("/");
@@ -219,15 +214,6 @@ class users_controller extends base_controller {
                 $data["modified"] = Time::now();
             }
 
-            // echo '<pre>';
-            // print_r($data);
-            // echo '</pre>';  
-
-            // echo '<pre>';
-            // print_r($user_details);
-            // echo '</pre>';  
-
-
             DB::instance(DB_NAME)->update("users", $data, "WHERE user_id = ".$this->user->user_id);
 
             # Redirect to user's profile
@@ -240,11 +226,7 @@ class users_controller extends base_controller {
             # Redirect to user's profile
             Router::redirect('/users/profile');
         }
-        # Otherwise, user clicked on 'cancel' (we ignore the 'clear' button)
-        // elseif(isset($_POST['clear'])){
-        //     # Redirect to user's profile
-        //     Router::redirect('/users/edit');
-        // }        
+       
     }
 
 
@@ -266,14 +248,6 @@ class users_controller extends base_controller {
         # Render template
             echo $this->template; 
         } 
-
-
-
-
-
-
-
-
 
     }
 

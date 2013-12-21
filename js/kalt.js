@@ -16,8 +16,17 @@ $( document ).ready(function() {
 
 	$("#clearForm").click(function() {
 
-		console.log("clearing");
 		$("#userEdit [id^='input']:visible").val("");
+
+	}); 
+
+
+	$(".thanks").click(function(e) {
+
+        //$(this).slideToggle('slow');
+        /* Preventing the default event (which would be to navigate the browser to the link's address) */
+        //e.preventDefault();
+        $(this).effect( "bounce", {times:2}, 300 );
 
 	}); 
 

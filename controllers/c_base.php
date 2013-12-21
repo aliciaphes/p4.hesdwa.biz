@@ -26,14 +26,11 @@ class base_controller {
 			$this->template->set_global('user', $this->user);
 
 		# CSS includes:
-		$client_files_head = Array(//'/css/bootstrap2.3.2.min.css',
-								   '/css/bootstrap3.0.0.min.css',			
+		$client_files_head = Array('/css/bootstrap3.0.0.min.css',			
 								   '/css/bootstrap-responsive.min.css',
 								   '/css/bootstrap-formhelpers.min.css',
 								   '/css/jquery-ui-1.10.3.custom.min.css',
-								   '/css/kalt.css'
-								   //,'http://fonts.googleapis.com/css?family=Montserrat'
-								   );
+								   '/css/kalt.css');
 		$this->template->client_files_head = Utils::load_client_files($client_files_head);
 
 

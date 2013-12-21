@@ -6,12 +6,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
 	
 	<?php if(isset($client_files_head)) echo $client_files_head; ?>
+	<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 	
 </head>
 
 <body>	
 
-	<header>
+	<header class="offset1">
 		<h3>KALT // Kill Airport Layover Time</h3>
 	</header>
 
@@ -26,7 +27,7 @@
 
 			<div class="span5 offset1">	
 				<ul class="nav nav-tabs">
-					<li class="dropdown">
+					<li class="dropdown mymenu">
 						<a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">
 						<?php if(defined('APP_NAME')) echo APP_NAME.' - '.$user->first_name.' '.$user->last_name;?>
@@ -36,7 +37,6 @@
 						<li><a href='/users/profile'>My profile</a></li>	
 						<li><a href='/trips/index'>Upcoming trips</a></li>
 						<li><a href='/trips/history'>Trips history</a></li>
-						<li><a href='/'>Find fellow travelers</a></li>
 						<li><a href='/users/logout'>Log out</a></li>
 					</ul>
 				</li>

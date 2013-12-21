@@ -2,9 +2,14 @@
 
 body{
 	font-family: 'Montserrat', Helvetica, sans-serif;
-	/*background-image: url("../img/1.jpg");*/
-	background-size: cover;
-	background-repeat: no-repeat;	
+	
+
+	/*color: white;*/
+	background: url("/bkg/3.jpg") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;	
 }
 
 /*textarea[name=foo] {*/
@@ -14,27 +19,30 @@ body{
 		resize: none;
 	}
 
+	label{
+		color: black;
+	}
+
+/*	.bfh-timepicker.myforms{
+	background-color: white;
+	}*/	
+
 	.ui-helper-hidden-accessible{
 		font-family: inherit;	
 		display:none;
 	}
 
 
-	ul{
-		font-family: inherit;	
-		list-style-type: none;
+
+	table, td, th{
+		border: 2px solid black;
+	}
+
+	.finger{
+		cursor: pointer;
+	}
+	#tripsIndex, #tripsHistory{
+		display: none;
 	}
 
 
-#tripsIndex, #tripsHistory{
-	display: none;
-}
-
-
-/*div[id^="tp"]{
-	float: left;
-	}*/
-
-
-
-/*label { display: inline-block; width: 140px; text-align: right; }​*/

@@ -10,7 +10,7 @@
 			<h3>Sign up</h3>
 
 			<!-- Show fields to be later verified -->
-
+			
 			<form method='POST' action='/users/p_signup' class="form-horizontal">
 				
 				<div class="control-group">
