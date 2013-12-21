@@ -10,7 +10,7 @@
 			<h3>Sign up</h3>
 
 			<!-- Show fields to be later verified -->
-			
+
 			<form method='POST' action='/users/p_signup' class="form-horizontal">
 				
 				<div class="control-group">
@@ -67,7 +67,7 @@
 				</form>
 			<?php endif; ?>
 
-			<?php if(isset($error)&& $error=='wrong_email'): ?>
+			<?php if(isset($error) && $error=='wrong_email'): ?>
 				<div class='alert alert-danger'>	
 					<strong>Wrong format in email address. Please correct.</strong>
 				</div>
