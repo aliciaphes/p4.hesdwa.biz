@@ -145,7 +145,15 @@ class users_controller extends base_controller {
 
             else{ # login succeeded:
 
-                $this->login_success($token);
+                //$this->login_success($token);
+                # Store this token in a cookie
+                setcookie("token", $token, strtotime('+1 year'), '/');
+
+                # update last login date:
+                $data = Array();
+                $data["last_login"] = Time::now();
+
+                DB::instance(DB_NAME)->update("users", $data, "WHERE token  = '".$token."'");                
 
                 # Send them to the main page
                 Router::redirect("/");
