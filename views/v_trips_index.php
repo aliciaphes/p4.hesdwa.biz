@@ -1,4 +1,4 @@
-<!-- View wher the user can see his upcoming trips -->
+<!-- View where the user can see his upcoming trips -->
 
 <div class="container-fluid span8 offset3">
 

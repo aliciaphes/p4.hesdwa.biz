@@ -16,10 +16,16 @@ class trips_controller extends base_controller {
         $_POST = DB::instance(DB_NAME)->sanitize($_POST);
 
         # Retrieve the key
-        $buttonPressed = array_keys($_POST)[0];
+        //$buttonPressed = array_keys($_POST)[0];
+        foreach ($_POST as $key=>$element) {
+        $buttonPressed = $key;
+        }
 
         # Retrieve the value
-        $trip_id = array_values($_POST)[0];
+        //$trip_id = array_values($_POST)[0];
+        foreach ($_POST as $key=>$element) {
+        $trip_id = $element;
+        }        
 
         if(isset($_POST[$buttonPressed])){
 
