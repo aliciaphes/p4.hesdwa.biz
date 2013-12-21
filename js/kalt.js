@@ -10,8 +10,6 @@ $( document ).ready(function() {
 	/*Cant you send the variable via a hidden input field and then grab that using Jquery??
 	<input type="hidden" name="grab_var" value="<?php echo $var; ?/>" */
 
-	//console.log($("#appPath").val());
-
 
 	$(".hidden").hide();
 
@@ -42,15 +40,14 @@ $( document ).ready(function() {
 
 
 
-$("[name^='row']").click(function() {
+	$("[name^='row']").click(function() {
 
-    var del=confirm("Are you sure you want to delete this record?");
-
-    return del;
-});
+	    return confirm("Are you sure you want to delete this record?");
+	});
 
 
-
+	//var alipe = $("#appPath").val()+"data/airports.json";
+	//console.log(alipe);
 
 	//use of AJAX for an autocompleter for the airport list using an external file in JSON
 	$('.airport').autocomplete({
@@ -59,7 +56,7 @@ $("[name^='row']").click(function() {
 
 			$.ajax({
 				dataType: "JSON",
-				url: "../data/airports.json",
+				url: "/data/airports.json", //"http://p4.hesdwa.biz.loc/data/airports.json", //alipe,
 				minLength: 3,
 				success: function(results){
 					var items = [];

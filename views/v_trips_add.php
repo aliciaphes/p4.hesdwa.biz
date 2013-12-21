@@ -35,7 +35,21 @@
 
 			<input name="airport" class="form-control airport ui-autocomplete-input" placeholder="Airport name">	
 
+
 			<br/><br/>
+
+
+			<?php if(isset($empty_airport)): ?>
+				<div class='alert alert-danger'>	
+					<strong>Please choose an airport from the list</strong>
+				<br/>
+				</div>
+			<?php endif; ?>
+
+			<br/><br/>
+
+
+
 
 			<button name="saveTrip" class="btn" type="submit">Save</button>
 			<button class="btn" type="submit">Cancel</button>

@@ -15,6 +15,7 @@
 		<h3>KALT // Kill Airport Layover Time</h3>
 	</header>
 
+<input type="hidden" id="appPath" value="<?php if(defined('APP_PATH')) echo APP_PATH; ?>" readonly>
 
 	<?php if($user): ?>
 

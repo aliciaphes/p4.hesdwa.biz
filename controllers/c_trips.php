@@ -32,14 +32,14 @@ class trips_controller extends base_controller {
 
 
 
-    public function add(){
+    public function add($empty_airport = NULL){
 
         # Setup view
         $this->template->content = View::instance('v_trips_add');
         $this->template->title   = "New trip";
 
         # Pass data to the view to check if trip has been added
-        //$this->template->content->added = $added;
+        $this->template->content->empty_airport = $empty_airport;
 
         # Render template
         echo $this->template;
@@ -51,80 +51,88 @@ class trips_controller extends base_controller {
         # If user clicked on 'save'
         if(isset($_POST['saveTrip'])){
 
-            # Associate this post with this user
-            $_POST['user_id']  = $this->user->user_id;
-            $_POST['begdaTimeFmt'] = strtotime($_POST['date']);
-            // $_POST['begin_time'] = Time::now();
-            // $_POST['end_time'] = Time::now();
+            if($_POST['airport'] != ""){
 
-            # Do not include country nor the button
-            unset($_POST['country']);
-            unset($_POST['saveTrip']);
+                # Associate this post with this user
+                $_POST['user_id']  = $this->user->user_id;
+                $_POST['begdaTimeFmt'] = strtotime($_POST['date']);
 
-            # Insert into database
-            DB::instance(DB_NAME)->insert('trips', $_POST);
+                # Do not include country nor the button
+                unset($_POST['country']);
+                unset($_POST['saveTrip']);
 
-            # Redirect to show trips      
-            Router::redirect("/trips/index/added");
+                # Insert into database
+                DB::instance(DB_NAME)->insert('trips', $_POST);
+
+                # Redirect to show trips      
+                Router::redirect("/trips/index/added");
+            }
+
+            else{
+                Router::redirect("/trips/add/empty_airport");
+            }
+
+
+
         }
 
-        else{
+    else{
             # Redirect to show trips      
-            Router::redirect("/trips/index");
-        } 
-    }
+        Router::redirect("/trips/index");
+    } 
+}
 
 
 
-    public function index($added = NULL) {
+public function index($added = NULL) {
 
         # Set up the View
-        $this->template->content = View::instance('v_trips_index');
-        $this->template->title   = $this->user->first_name."'s trips";
+    $this->template->content = View::instance('v_trips_index');
+    $this->template->title   = $this->user->first_name."'s trips";
 
         # Query
-        $q = "SELECT *
-        FROM trips 
-        WHERE user_id = ".$this->user->user_id . 
-        " ORDER BY begdaTimeFmt,begin_time,end_time DESC" ;
+    $q = "SELECT *
+    FROM trips 
+    WHERE user_id = ".$this->user->user_id . 
+    " ORDER BY begdaTimeFmt,begin_time,end_time DESC" ;
 
         # Run the query, store the results in the variable $trips
-        $trips = DB::instance(DB_NAME)->select_rows($q);
+    $trips = DB::instance(DB_NAME)->select_rows($q);
 
         # save current date
-        $today = Time::now();
+    $today = Time::now();
 
-        $upcoming = array();
+    $upcoming = array();
 
         # remove items from the past
-        foreach($trips as $row => $innerArray){
-          foreach($innerArray as $innerRow => $value){
-            if($innerRow == 'begdaTimeFmt'){
-                if($value < $today){
+    foreach($trips as $row => $innerArray){
+      foreach($innerArray as $innerRow => $value){
+        if($innerRow == 'begdaTimeFmt'){
+            if($value < $today){
                     // echo "borrando ";
                     // print_r($innerArray);
                     // echo "<br>";
-                    unset($innerArray);
-                }
-                else{
-                    array_push($upcoming, $innerArray);
-                }
+                unset($innerArray);
+            }
+            else{
+                array_push($upcoming, $innerArray);
             }
         }
     }
+}
 
         // echo '<pre>';
         // print_r($upcoming);
         // echo '</pre>';
 
         # Pass data to the View
-    $this->template->content->upcoming = $upcoming;
+$this->template->content->upcoming = $upcoming;
 
         # Check if trip has been added
-    $this->template->content->added = $added;
+$this->template->content->added = $added;
 
         // # Render the View
-    echo $this->template;
+echo $this->template;
 }
 
 

@@ -1,6 +1,5 @@
 
 <!-- This is the view where the user will access the application -->
-<input type="hidden" id="appPath" value="<?php if(defined('APP_PATH')) echo APP_PATH; ?>">
 
 <div class="container-fluid">
 
@@ -43,6 +42,9 @@
 			<?php endif; ?>
 
 			<br/><br/>
+
+
+			<!-- Form to sign up a user -->
 			<?php
 			$signup = new Form();
 
