@@ -40,6 +40,7 @@
 						<input class="input-block-level form-control" type="password" id="inputPassword" name='password' placeholder="Password" required>
 					</div>
 				</div>
+				<br/>
 
 
 				<!-- sign up button: -->
@@ -56,7 +57,7 @@
 				<div class='alert alert-danger'>	
 					<strong>The specified email already exists. Please log in or try again.</strong>
 				</div>
-				<br>
+				<br/>
 
 				<?php
 				$login = new Form();
