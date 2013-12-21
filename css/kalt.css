@@ -1,10 +1,6 @@
-/*font-family: inherit for every element*/
 
 body{
 	font-family: 'Montserrat', Helvetica, sans-serif;
-	
-
-	/*color: white;*/
 	background: url("/bkg/3.jpg") no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -12,37 +8,35 @@ body{
 	background-size: cover;	
 }
 
-/*textarea[name=foo] {*/
-	textarea{
-		font-family: inherit;
-		text-align:left; /*doesnt work*/		
-		resize: none;
-	}
 
-	label{
-		color: black;
-	}
+textarea{
+	font-family: inherit;
+	text-align:left; /*doesn't work*/		
+	resize: none;
+}
 
-/*	.bfh-timepicker.myforms{
-	background-color: white;
-	}*/	
-
-	.ui-helper-hidden-accessible{
-		font-family: inherit;	
-		display:none;
-	}
+label{
+	color: black;
+}
 
 
 
-	table, td, th{
-		border: 2px solid black;
-	}
+table, td, th{
+	border: 2px solid black;
+}
 
-	.finger{
-		cursor: pointer;
-	}
-	#tripsIndex, #tripsHistory{
-		display: none;
-	}
+
+.ui-helper-hidden-accessible{
+	font-family: inherit;	
+	display:none;
+}
+
+
+.finger{
+	cursor: pointer;
+}
+#tripsIndex, #tripsHistory{
+	display: none;
+}
 
 

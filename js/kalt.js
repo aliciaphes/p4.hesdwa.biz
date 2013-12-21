@@ -1,15 +1,5 @@
-//<?php header("Content-Type: application/javascript"); ?>
-//<?php header("Content-Type: text/javascript"); ?>
+
 $( document ).ready(function() {
-
-	// PHP directives only work in .php files (or other files that the server has been configured to run through the PHP engine). If you want to generate JavaScript from PHP, then rename the file to have a .php extension (instead of a .js extension) and add (to the top of the script): <?php header("Content-Type: application/javascript"); ?>
-
-	//var airports = "<?php if(defined('APP_PATH')) echo APP_PATH;?>";
-	//console.log(airports);
-
-	/*Cant you send the variable via a hidden input field and then grab that using Jquery??
-	<input type="hidden" name="grab_var" value="<?php echo $var; ?/>" */
-
 
 	$(".hidden").hide();
 
@@ -23,9 +13,6 @@ $( document ).ready(function() {
 
 	$(".thanks").click(function(e) {
 
-        //$(this).slideToggle('slow');
-        /* Preventing the default event (which would be to navigate the browser to the link's address) */
-        //e.preventDefault();
         $(this).effect( "bounce", {times:2}, 300 );
 
 	}); 
@@ -55,8 +42,7 @@ $( document ).ready(function() {
 	});
 
 
-	//var alipe = $("#appPath").val()+"data/airports.json";
-	//console.log(alipe);
+
 
 	//use of AJAX for an autocompleter for the airport list using an external file in JSON
 	$('.airport').autocomplete({
@@ -65,7 +51,7 @@ $( document ).ready(function() {
 
 			$.ajax({
 				dataType: "JSON",
-				url: "/data/airports.json", //"http://p4.hesdwa.biz.loc/data/airports.json", //alipe,
+				url: "/data/airports.json",
 				minLength: 3,
 				success: function(results){
 					var items = [];
@@ -88,6 +74,3 @@ $( document ).ready(function() {
 	});//end of autocomplete
 
 }); //end of file
-
-
-//<?php echo '</script>'; ?>
